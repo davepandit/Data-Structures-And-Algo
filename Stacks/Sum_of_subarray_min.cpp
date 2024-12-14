@@ -33,7 +33,7 @@ vector<int> min_subarray_sum(vector<int> arr){
 }
 
 int main(){
-    vector<int> arr = {11,81,94,43,3};
+    vector<int> arr = {1, 2, 3};
     vector<int> ans_arr = min_subarray_sum(arr);
 
     int count = 0;
