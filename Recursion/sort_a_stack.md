@@ -1,0 +1,2 @@
+Sorting a stack in ascecnding order or in the descending order is the same as that of sorting an array, the insert condition what we write determines whether it will be in the ascending order or in the descending order.
+cheers🥂

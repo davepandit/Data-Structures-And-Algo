@@ -12,7 +12,7 @@ void insert(vector<int>& arr, int temp){
     // remove the last ele and then again call the insert function 
     int last_ele = arr[arr.size() - 1];
     arr.pop_back();
-    insert(arr, temp); 
+    insert(arr, last_ele); 
 
     // induction 
     // simply dal do the ele which we have removed while making the input shorter 
