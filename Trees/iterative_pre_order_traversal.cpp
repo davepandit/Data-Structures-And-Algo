@@ -20,7 +20,7 @@ vector<int> pre_order_traversal(Node* root){
         return ans;
     }
     stack<Node*> st;
-
+    st.push(root);
     while(!st.empty()){
         // get the top ele 
         Node* node = st.top();
