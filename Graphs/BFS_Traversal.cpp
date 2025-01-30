@@ -1,60 +1,59 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void level_order_traversal(int starting_node, vector<vector<int>>& adj, vector<int>& visited) {
-    queue<int> q;
-    q.push(starting_node);
-
-    // Mark the starting node as visited
-    visited[starting_node] = 1;
-
-    while (!q.empty()) {
-        int size = q.size();
-
-        for (int i = 0; i < size; ++i) {
-            // Take out the front element
-            int front_ele = q.front();
-            q.pop();
-
-            // Print the current node
-            cout << front_ele << " ";
-
-            // Check all adjacent nodes
-            for (int j = 0; j < adj[front_ele].size(); ++j) {
-                int neighbor = adj[front_ele][j];
-                if (!visited[neighbor]) {
-                    q.push(neighbor);
-                    visited[neighbor] = 1; // Mark neighbor as visited
+class Solution {
+  public:
+    // Function to return Breadth First Traversal of given graph.
+    vector<int> bfsOfGraph(int V, vector<int> adj[]) {
+        int vis[V] = {0}; 
+        vis[0] = 1; 
+        queue<int> q;
+        // push the initial starting node 
+        q.push(0); 
+        vector<int> bfs; 
+        // iterate till the queue is empty 
+        while(!q.empty()) {
+           // get the topmost element in the queue 
+            int node = q.front(); 
+            q.pop(); 
+            bfs.push_back(node); 
+            // traverse for all its neighbours 
+            for(auto it : adj[node]) {
+                // if the neighbour has previously not been visited, 
+                // store in Q and mark as visited 
+                if(!vis[it]) {
+                    vis[it] = 1; 
+                    q.push(it); 
                 }
             }
         }
+        return bfs; 
+    }
+};
+
+void addEdge(vector <int> adj[], int u, int v) {
+    adj[u].push_back(v);
+    adj[v].push_back(u);
+}
+
+void printAns(vector <int> &ans) {
+    for (int i = 0; i < ans.size(); i++) {
+        cout << ans[i] << " ";
     }
 }
 
-int main() {
-    int n, m;
-    // n is the number of nodes, m is the number of edges
-    cin >> n >> m;
+int main() 
+{
+    vector <int> adj[6];
+    
+    addEdge(adj, 0, 1);
+    addEdge(adj, 1, 2);
+    addEdge(adj, 1, 3);
+    addEdge(adj, 0, 4);
 
-    // Make the adjacency list (1-based indexing)
-    vector<vector<int>> adj(n + 1);
-    for (int i = 0; i < m; ++i) {
-        int u, v;
-        cin >> u >> v; // Read the nodes that have an edge between them
-        adj[u].push_back(v);
-        adj[v].push_back(u);
-    }
-
-    // Create a visited array
-    vector<int> visited(n + 1, 0);
-
-    // Perform level-order traversal for all components
-    for (int i = 1; i <= n; ++i) {
-        if (!visited[i]) {
-            level_order_traversal(i, adj, visited);
-            cout << endl; // Separate components by a newline
-        }
-    }
+    Solution obj;
+    vector <int> ans = obj.bfsOfGraph(5, adj);
+    printAns(ans);
 
     return 0;
 }
