@@ -14,7 +14,7 @@ void dfs(int sr, int sc, vector<vector<int>>& visited, vector<vector<char>>& boa
         int ni = sr + di;
         int nj = sc + dj;
 
-        if(ni >= 0 && ni < m && nj >= 0 && nj < n && board[ni][nj] == 'O'){
+        if(ni >= 0 && ni < m && nj >= 0 && nj < n && board[ni][nj] == 'O' && visited[ni][nj] == 0){
             // then we need to call the dfs from here again
             dfs(ni, nj, visited, board);
         }
