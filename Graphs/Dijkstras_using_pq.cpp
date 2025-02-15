@@ -44,6 +44,7 @@ vector<int> dijkstras(int v, vector<vector<int>> adj[], int s){
 }
 
 int main(){
-
+     // consider adj, v and s is given
+     vector<int> res = dijkstras(adj, v, s);
     return 0;
 }
