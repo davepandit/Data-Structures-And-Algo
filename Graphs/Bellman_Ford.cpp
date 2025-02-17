@@ -39,5 +39,6 @@ vector<int> bellmanFord(vector<vector<int>> edges, int v, int s){
 }
 
 int main(){
+    vector<int> res = bellmanFord(edges, v, s);
     return 0;
 }
