@@ -32,7 +32,7 @@ class Solution {
         
         for(int i = 0; i < n; ++i){
             if(visited[i] == 0){
-                dfs(0, adj, st, visited);
+                dfs(i, adj, st, visited);
             }
         }
         
