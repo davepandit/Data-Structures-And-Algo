@@ -43,10 +43,9 @@ class Solution {
         vector<int> indegree(n, 0);
         
         // Compute the indegree of each node
-        for(int i = 0; i < n; ++i){
-            for(int j = 0; j < adj[i].size(); ++j){
-                // Increment indegree of the adjacent node
-                indegree[adj[i][j]] = indegree[adj[i][j]] + 1;
+        for (int i = 0; i < n; ++i) {
+            for (int neighbor : adj[i]) {
+                indegree[neighbor]++;
             }
         }
         
