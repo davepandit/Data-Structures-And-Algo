@@ -1,4 +1,3 @@
-// Note this is not the optimised code 
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -11,32 +10,24 @@
  * };
  */
 class Solution {
-    public:
-        void inorder(TreeNode* root, vector<int>& res){
-            if(root == NULL){
-                return;
-            }
-    
-            inorder(root->left, res);
-            res.push_back(root->val);
-            inorder(root->right, res);
-        }
-        bool isValidBST(TreeNode* root) {
-            // Algorithm 
-            // 1. Do the inorder traversal and store the ele in a vector
-            // 2. Traverse through the vector and then just see that whether the ele are sorted or not
-            vector<int> res;
-            inorder(root, res);
-            // res contains the inorder traversal 
-            for(int i = 0; i < res.size() - 1; i++){
-                if(res[i] < res[i + 1]){
-                    continue;
-                }
-                else{
-                    return false;
-                }
-            }
-    
+public:
+    bool solve(TreeNode* root, long min_val, long max_val){
+        if(root == NULL){
             return true;
         }
-    };
+        if(root->val >= max_val || root->val <= min_val){
+            return false;
+        }
+        bool lp = solve(root->left, min_val, root->val);
+        bool rp = solve(root->right, root->val, max_val);
+
+        return (lp && rp);
+    }
+    bool isValidBST(TreeNode* root) {
+        // Algorithm - Every node is in between some range 
+        long min_val = LONG_MIN;
+        long max_val = LONG_MAX;
+        return solve(root, min_val, max_val);
+        
+    }
+};

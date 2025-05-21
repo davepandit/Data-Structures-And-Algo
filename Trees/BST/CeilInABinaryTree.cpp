@@ -1,42 +1,25 @@
-#include <bits/stdc++.h>
-using namespace std;
+// User function Template for C++
 
-class Node{
-    public:
-        int data;
-        Node* left;
-        Node* right;
-
-        Node(int val){
-            data = val;
-            left = NULL;
-            right = NULL;
-        }
-};
-
-int findCeil(Node* root, int key){
+// Function to return the ceil of given number in BST.
+int findCeil(Node* root, int input) {
+    if (root == NULL)
+        return -1;
+    
     Node* node = root;
-    int ceil = root->data; // can assign anything to anything
-
-    while(node){
-        if(node->data < key){
-            node = node->right;
-        }
-        else if(node->data == key){
-            return node->data;
-        }
-        else if(node->data > key){
-            ceil = node->data;
+    int ans = -1;
+    while(node != NULL){
+        if(node->data >= input){
+            // that can be a possible answer 
+            ans = node->data;
+            // eliminate the right search space 
             node = node->left;
         }
+        else if(node->data < input){
+            // eliminate the left search space 
+            node = node->right;
+        }
     }
-
-    return ceil;
-}
-
-int main(){
-    Node* root = new Node(10);
-    int ans = findCeil(root, 4);
-    cout << ans;
-    return 0;
+    
+    return ans;
+    
 }

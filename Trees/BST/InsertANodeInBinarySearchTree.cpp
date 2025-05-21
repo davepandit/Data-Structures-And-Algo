@@ -10,47 +10,43 @@
  * };
  */
 class Solution {
-    public:
-        TreeNode* insertIntoBST(TreeNode* root, int val) {
-            // Algorithm 
-            // 1. There can be multiple trees as the soln for this problem 
-            // But we will try to add the target val to the node that has either the left node 
-            // as null or the right node as null(basically kind of ekdum niche of the tree)
-            // such that uske niche wala tree is not disturbed at all
-            // 2. Loop till the node is valid
-            // Rest of the algo is simple and requires some sort of  hit and trial to arrive
-    
-            TreeNode* node = root;
-            // making one temp node, because baad me jake ise Node ke right me ya to left me we 
-            // need to add the target node
-            TreeNode* tempNode = root;
-            while(node){
-                if(node->val < val){
-                    tempNode = node;
-                    // move to the right 
-                    node = node->right;
-                }
-                else if(node->val > val){
-                    tempNode = node;
-                    // move to the left 
-                    node = node->left;
-                }
-            }
-    
-            // now we have the tempNode jiske ya to fir left me ya to fir right me 
-            // we have to add the target Node
-            TreeNode* tNode = new TreeNode(val);
-            if(root == NULL){
-                return tNode;
-            }
-            if(tempNode->val < val){
-                tempNode->right = tNode;
-            }
-            else{
-                tempNode->left = tNode;
-            }
-    
-            // now return the root
-            return root;
+public:
+    TreeNode* insertIntoBST(TreeNode* root, int val) {
+        // create a new node out of the ele give 
+        TreeNode* new_node = new TreeNode(val);
+
+        if(root == NULL){
+            return new_node;
         }
-    };
+
+        // new_node will always be inserted at the leaf position 
+        TreeNode* node = root;
+        TreeNode* last_node = NULL;
+
+        while(node){
+            if(node->val > val){
+                last_node = node;
+                // eliminate the right search space 
+                node = node->left;
+            }
+            else if(node->val < val){
+                last_node = node;
+                // eliminate the left search space 
+                node = node->right;
+            }
+        }
+
+        // node is null but the last_node is pointing to the ele jahan we need to attach the ele
+        // simply we need to check the below condition 
+        if(last_node->val < val){
+            // attach to the right of it 
+            last_node->right = new_node;
+        } 
+        else{
+            // attach to the left 
+            last_node->left = new_node;
+        }
+
+        return root;
+    }
+};
