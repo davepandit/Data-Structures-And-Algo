@@ -16,6 +16,11 @@ struct Node {
     // that have this node as a prefix
     int cntPrefix = 0; 
 
+    Node(){
+        for(int i = 0; i < 26; ++i){
+            links[i] = nullptr; 
+        }
+    }
     // Function to check if the
     // node contains a specific key
     bool containsKey(char ch) {

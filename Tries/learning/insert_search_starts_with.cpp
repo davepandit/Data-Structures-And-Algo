@@ -6,8 +6,14 @@ struct Node
     // here every node has an array which is holding references to other nodes 
     Node* links[26];
     // flag variable 
-    bool flag;
+    bool flag = false;
 
+    Node(){
+        for(int i = 0; i < 26; ++i){
+            links[i] = nullptr; 
+        }
+    }
+    
     // check if the node contians the specific key 
     bool containsKey(char ch){
         // just see if the pointer to that char in the links is pointing to null or what 
