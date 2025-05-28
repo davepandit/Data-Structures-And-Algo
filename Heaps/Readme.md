@@ -67,3 +67,37 @@ heapifyUp(...);
 ```
 
 (Or if you're optimizing, you can compare the new value with its parent to decide which one to call.)
+
+### Time Complexities of operations in Heaps ->
+
+1. For inserting an ele it takes -> O(log n)
+
+2. Heapify Down -> O(log n)
+
+3. Heapify Up -> O(log n)
+
+4. While deleting the max ele from the heap we use heapify down only -> O(log n)
+
+5. While building a heap we also use heapify down but there the complexity is not O(n log n), rather O(n)
+
+
+
+#### How does a priority queue work in c++?
+
+🔧 In C++, this is how priority_queue works:
+By default:
+
+```priority_queue<int> pq;```
+
+This uses:
+
+priority_queue<```int```, ```vector<int>```, ```less<int>```>
+So it’s a max heap by default — the largest element comes out first.
+
+✅ To make a min heap, use:
+
+priority_queue<```int```, ``vector<int>``, ``greater<int>``> pq;
+
+greater<`int`> makes the smallest element the highest priority.
+
+So this turns the priority queue into a min heap.
