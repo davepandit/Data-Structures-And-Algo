@@ -101,3 +101,7 @@ priority_queue<```int```, ``vector<int>``, ``greater<int>``> pq;
 greater<`int`> makes the smallest element the highest priority.
 
 So this turns the priority queue into a min heap.
+
+`We know that if we are using the priority queue then in order to insert an ele it takes O(log n) time, but we can do the same insert operation in O(n)d time, if we use this thing ->`
+
+#### priority_queue`<int> pq(vector.begin(), vector.end())` 
