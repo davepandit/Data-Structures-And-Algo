@@ -1,0 +1,1 @@
+#### In linked list one of the major problems is like we cannot move back because there are links only in one direction, so in those cases where we may have to come back, we can think of reversing the linked list and do some operations.
