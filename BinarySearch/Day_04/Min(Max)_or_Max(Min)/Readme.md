@@ -1,0 +1,1 @@
+`Till now we have solved problems where we have applied Binary search on 1d arrays, on answers to find min or max but now we will use binary search to find min of max or max of min`
