@@ -1,51 +1,42 @@
-#include <bits/stdc++.h>
-using namespace std;
+// User function Template for C++
 
-void insert(stack<int>& st, int temp){
-    // base condition 
-    if(st.empty()){
-        st.push(temp);
-        return;
-    }
-    // hypothesis 
-    int top_ele = st.top();
-    st.pop();
-    insert(st, temp);
-
-    // induction 
-    st.push(top_ele);
-}
-
-void reverse_stack(stack<int>& st){
-    int s = st.size();
-    // base condition 
-    if(st.empty()){
-        return;
-    }
-    // hypothesis
-    int top_ele = st.top();
-    st.pop();
-    // call again
-    reverse_stack(st);
-    // induction 
-    // this in itself will be a recursion 
-    insert(st, top_ele);
-
-}
-
-int main(){
-    vector<int> arr = {1, 2, 3, 4, 5};
-    // making a stack out of this
-    stack<int> st;
-    for(int i = 0; i < arr.size(); i++){
-        st.push(arr[i]);
-    }
-    reverse_stack(st);
-
-    // print the stack 
-    while(!st.empty()){
-        cout << st.top() << " ";
+class Solution {
+  public:
+    void removeRemainingAndPutTop(stack<int>& st, int topEle){
+        if(st.size() == 0){
+            // simply we can put the top ele 
+            st.push(topEle);
+            return;
+        }
+        
+        // remove the top
+        int anotherTop = st.top();
         st.pop();
+        
+        removeRemainingAndPutTop(st, topEle);
+        
+        // push the anotherTop into the st
+        st.push(anotherTop);
+        
     }
-    return 0;
-}
+    void solve(stack<int>& st){
+        if(st.size() == 0){
+            return;
+        }
+        
+        // take out the top ele 
+        int topEle = st.top();
+        st.pop();
+        
+        solve(st);
+        // take out the rest of the ele and put the topEle first and then again
+        // put the ele jinko ki na humne nikala hai 
+        removeRemainingAndPutTop(st, topEle);
+        
+    }
+    void Reverse(stack<int> &st) {
+        int n = st.size();
+        
+        solve(st);
+    }
+};
