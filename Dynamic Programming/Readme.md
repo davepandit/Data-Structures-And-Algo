@@ -12,7 +12,7 @@
 #### How to convert a memoization soln into a `tabulation soln`?
 
 - Declare base case
-- Express all states in for loop
+- Express all states in `for loop`
 - Copy the recurrence and write it as it is 
 
 #### How can we do `space optimisation` after we have written the tabulation sol?
