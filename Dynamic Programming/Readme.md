@@ -22,3 +22,5 @@
 #### In majority of the cases in the DP problem the time complexity is O(n)(atleast for the 1d array problems), not very sure but this is because only the left subtree is computed and the values are stored and hence are re-utilised later
 
 ### In order to write any recurrence relation we need to know two things - `kya karna hai` + `kahan jaana hai`
+
+- In Day 3 we will be solving the problem where we have to do something with the subsequence or subsest and with a target 
